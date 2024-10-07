@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .note-container {
+            margin-top: 20px;
+        }
+        .note {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Blog</h1>
+    </header>
+
+    <div class="note-container" id="note-container">
+        <!-- Notes will be displayed here -->
+    </div>
+
+    <script>
+        async function loadNotes() {
+            try {
+                const response = await fetch('http://localhost:8080/notes');
+                const notes = await response.json();
+                
+                const noteContainer = document.getElementById('note-container');
+                notes.forEach(note => {
+                    const noteDiv = document.createElement('div');
+                    noteDiv.className = 'note';
+                    noteDiv.innerHTML = `<h2>${note.title}</h2><p>${note.content}</p>`;
+                    noteContainer.appendChild(noteDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching notes:', error);
+            }
+        }
+
+        window.onload = loadNotes;
+    </script>
+
+</body>
+</html>
