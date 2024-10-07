@@ -45,7 +45,7 @@
     <script>
         async function loadNotes() {
             try {
-                const response = await fetch('http://localhost:8080/notes');
+                const response = await fetch('http://18.195.154.107:8080/notes');
                 const notes = await response.json();
                 
                 const noteContainer = document.getElementById('note-container');
