@@ -52,7 +52,7 @@
                 notes.forEach(note => {
                     const noteDiv = document.createElement('div');
                     noteDiv.className = 'note';
-                    noteDiv.innerHTML = `<h2>${note.title}</h2><p>${note.content}</p>`;
+                    noteDiv.innerHTML = `<h2>${note.title}</h2><p>${note.contents}</p>`;
                     noteContainer.appendChild(noteDiv);
                 });
             } catch (error) {
